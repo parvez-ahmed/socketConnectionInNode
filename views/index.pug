@@ -1,0 +1,17 @@
+doctype html
+html
+   head
+      title = "Hello Pug"
+      script(src='https://cdn.socket.io/4.0.1/socket.io.js')
+      script.
+       const socket = io("http://localhost:#{port}/frontend");
+       socket.on("MessageFromServer",function(data){
+          console.log("working",data)
+          let li = document.createElement("li");
+          li.innerText = `Name is ${data.name} and Origin is ${data.origin} and Destination is ${data.destination}`
+          document.getElementById("ulList").appendChild(li)
+       })
+       
+   body
+    h1 Hello Everyone
+    ul#ulList
